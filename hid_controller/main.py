@@ -9,6 +9,7 @@ import time
 Mój syntax:
 WRITE ala ma kota
 CLICK CTRLALTDEL
+WAIT 10
 END
 ENDQ --exit without execution
 '''
@@ -28,7 +29,7 @@ def my_lexspars(input_cmd):
         print("Komendy zostaly anulowane")
         return
     elif(last != 'END' ):
-       print("Zły syntax")
+       print("Nieprawidlowy znak konczacy")
        return 
     else:
        parsed_cmd = []
@@ -55,11 +56,24 @@ def my_parser(one_cmd):
 
 def my_eval(exe_cmd):
    for obj in exe_cmd:
-      for l in obj.c_val:
-         hid_write(key_mapped[l])
-         hid_write(chr(0)*8)
-      print(obj.c_val)
-      print(obj.c_type)
+      if(obj.c_type == "WAIT"):
+         time.sleep(int(obj.c_val))
+         print("Sleep completed")
+      elif(obj.c_type == "CLICK"):
+         print(obj.c_val)
+         print(obj.c_type)
+         print(chr(0)*8)
+         print("click completed")
+      elif(obj.c_type == "WRITE"):
+         for l in obj.c_val:
+            print(key_mapped[l].encode())
+            print(chr(0)*8)
+         print("WRITE completed")
+      else:
+         print("Something went wrong!!!")
+         return -1
+      print("Script done.")
+      return 1     
 
 while 1:
     print("Wybierz co chcesz zrobić\n1. Payload 1\n2.Payload 2\n3.Payload 3\n4. New payload\n")
@@ -73,11 +87,11 @@ while 1:
     elif(x == '4'):
        y = []
        inp = ''
-       print("Enter code:\n")
+       print("Enter code:")
        while (inp != 'END' and inp != 'ENDQ'):
           inp = input()
           y.append(inp)
-       time.sleep(10)
+       
        my_lexspars(y)
        
     else:

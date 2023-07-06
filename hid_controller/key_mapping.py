@@ -90,6 +90,7 @@ key_mapped = {
 '{': chr(0)*2 +chr(80)+chr(0)*5,
 ']': chr(2)+chr(0)+chr(79)+chr(0)*5,
 '[': chr(2)+chr(0)+chr(80)+chr(0)*5,
+'CTRLALTDEL': chr(5)+chr(0)+chr(76)+chr(0)*5,
 
 #Next Signs are used for different keymappings - change if you want to
 '$': chr(0)*2 +chr(40)+chr(0)*5, #ENTER

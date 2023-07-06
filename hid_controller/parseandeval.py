@@ -2,10 +2,7 @@ from keyMapping import key_mapped
 import time
 
 '''
-{
-    type:
 
-}
 Mój syntax:
 WRITE ala ma kota
 CLICK CTRLALTDEL
@@ -49,10 +46,6 @@ class Click(Command):
        print(chr(0)*8)
        print("click completed")  
 
-'''WRITE ala ma kota
-CLICK CTRLALTDEL
-WAIT'''
-
 def my_parser(one_cmd):
     if one_cmd == "END":
            print("Ending...")
@@ -65,7 +58,7 @@ def my_parser(one_cmd):
         elif(c_type == "CLICK"):
             return Click(c_type, val)
         elif(c_type == "WAIT"):
-            return Wait(c_type, val)
+            return Wait(c_type, val.strip())
         else:
             tmp = Command(c_type, val)
             tmp.c_correct = False

@@ -1,5 +1,6 @@
 # Import the library
 import argparse
+import sys
 import parseandeval as paev
 def print_logo():
     print('''
@@ -29,6 +30,20 @@ def user_input():
             user_cmd.execute()
         else:
             print("Wrong syntax!")
+def file_input(file):
+    try:
+        i = 0
+        with open(file, 'r') as f:
+           for user_cmd in f:
+               user_cmd = paev.my_parser(user_cmd[:-1])# with deleted last sign
+               if(user_cmd.c_correct):
+                  user_cmd.execute()
+               else:
+                 print("Wrong syntax!")
+    except IOError as e:
+        print("I/O error({0}): {1}".format(e.errno, e.strerror))
+   
+   
 # Create the parser
 parser = argparse.ArgumentParser(
     prog="haoa",
@@ -45,10 +60,11 @@ args = parser.parse_args()
 print(args)
 print_logo()
 if(args.myinput):
-    user_input()
-    
+    user_input()   
+elif(args.file != None):
+    file_input(args.file)
 else:
-    print("wczytywanie pliku")
+    user_input()
     
 
 

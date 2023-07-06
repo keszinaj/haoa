@@ -1,5 +1,6 @@
 # Import the library
 import argparse
+import parseandeval as paev
 def print_logo():
     print('''
 
@@ -23,6 +24,11 @@ def user_input():
     user_cmd = ""
     while user_cmd != "END":
         user_cmd = input('> ')
+        user_cmd = paev.my_parser(user_cmd)
+        if(user_cmd.c_correct):
+            user_cmd.execute()
+        else:
+            print("Wrong syntax!")
 # Create the parser
 parser = argparse.ArgumentParser(
     prog="haoa",

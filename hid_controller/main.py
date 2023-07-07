@@ -35,7 +35,9 @@ def file_input(file):
         i = 0
         with open(file, 'r') as f:
            for user_cmd in f:
-               user_cmd = paev.my_parser(user_cmd[:-1])# with deleted last sign
+               print(user_cmd[:-1])
+               user_cmd = paev.my_parser(user_cmd.rstrip())# with deleted \n
+               
                if(user_cmd.c_correct):
                   user_cmd.execute()
                else:

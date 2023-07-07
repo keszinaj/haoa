@@ -2,15 +2,17 @@ from keyMapping import key_mapped
 import time
 
 '''
-
-Mój syntax:
+My syntax:
 WRITE ala ma kota
 CLICK CTRLALTDEL
 WAIT 10
 END
-ENDQ --exit without execution
 '''
+
 def hid_write(report):
+    #hmm moze to warto przepisac tak aby zalezalo od kalsy
+    # w sensie jak pisze tekst to moze warto aby to 
+    # caly czas było otwarte???
     with open('/dev/hidg0', 'rb+') as fd:
         fd.write(report.encode())
 
@@ -67,6 +69,3 @@ def my_parser(one_cmd):
         tmp = Command(" ", " ")
         tmp.c_correct = False
         return tmp
-       
-
-   

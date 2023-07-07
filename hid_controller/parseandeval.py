@@ -43,13 +43,12 @@ class Click(Command):
         super().__init__(t, val)  
    def execute(self):
        with open('/dev/hidg0', 'rb+') as fd:
-        for l in self.c_val:
-          try:
-              fd.write(key_mapped[l].encode())
-              uc = chr(0) * 8
-              fd.write(uc.encode())
-          except: 
-              print(l + "click is not supported")
+        try:
+            fd.write(key_mapped[self.c_val].encode())
+            uc = chr(0) * 8
+            fd.write(uc.encode())
+        except: 
+            print(self.c_val + "click is not supported")
        print("click completed")  
 
 '''

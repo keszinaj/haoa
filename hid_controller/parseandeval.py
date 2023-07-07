@@ -1,27 +1,15 @@
 from keyMapping import key_mapped
 import time
 
-'''
-My syntax:
-WRITE ala ma kota
-CLICK CTRLALTDEL
-WAIT 10
-END
-'''
-
-def hid_write(report):
-    #hmm moze to warto przepisac tak aby zalezalo od kalsy
-    # w sensie jak pisze tekst to moze warto aby to 
-    # caly czas było otwarte???
-    with open('/dev/hidg0', 'rb+') as fd:
-        fd.write(report.encode())
-
 class Command():
   def __init__(self, t, val):
     self.c_type = t
     self.c_val = val
     self.c_correct = True
 
+'''
+   Object represent WAIT command
+'''
 class Wait(Command):
    def __init__(self, t, val):
         super().__init__(t, val)
@@ -30,6 +18,9 @@ class Wait(Command):
        time.sleep(int(self.c_val))
        print("SLEEP completed")
 
+'''
+   Object represent WRITE command
+'''
 class Write(Command):
    def __init__(self, t, val):
         super().__init__(t, val)
@@ -38,11 +29,15 @@ class Write(Command):
         for l in self.c_val:
           try:
               fd.write(key_mapped[l].encode())
-              fd.write(chr(0)*8)
+              uc = chr(0) * 8
+              fd.write(uc.encode())
           except: 
               print(l + "sign is not supported")
        print("WRITE completed")
 
+'''
+   Object represent CLICK command
+'''
 class Click(Command):
    def __init__(self, t, val):
         super().__init__(t, val)  
@@ -51,18 +46,22 @@ class Click(Command):
         for l in self.c_val:
           try:
               fd.write(key_mapped[l].encode())
-              fd.write(chr(0)*8)
+              uc = chr(0) * 8
+              fd.write(uc.encode())
           except: 
               print(l + "click is not supported")
        print("click completed")  
 
+'''
+   Function parse user input
+'''
 def my_parser(one_cmd):
     if one_cmd == "END":
            print("Ending...")
            exit()
     try:
-        c_type = one_cmd[:one_cmd.index(" ")]
-        val = one_cmd[one_cmd.index(" ")+1:]
+        c_type = one_cmd[:one_cmd.index(" ")] # take type
+        val = one_cmd[one_cmd.index(" ")+1:] # take value
         if(c_type == "WRITE"):
             return Write(c_type, val)
         elif(c_type == "CLICK"):

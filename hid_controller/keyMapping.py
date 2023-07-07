@@ -100,6 +100,6 @@ key_mapped = {
 '_': chr(0)*2 +chr(44)+chr(0)*5, #SPATIE
 '+': chr(0)*2 +chr(70)+chr(0)*5, #PRINT SCREEN
 '[': chr(0)*2 +chr(76)+chr(0)*5, #DELETE
-']': chr(5)+chr(0)+chr(76)+chr(0)*5, #CTRL+ALT+DEL
+#']': chr(5)+chr(0)+chr(76)+chr(0)*5, #CTRL+ALT+DEL
 '|': chr(0)*2 +chr(81)+chr(0)*5, #DOWN
 }

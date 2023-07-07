@@ -34,18 +34,26 @@ class Write(Command):
    def __init__(self, t, val):
         super().__init__(t, val)
    def execute(self):
-       for l in self.c_val:
-         print(key_mapped[l].encode())
-         print(chr(0)*8)
+       with open('/dev/hidg0', 'rb+') as fd:
+        for l in self.c_val:
+          try:
+              fd.write(key_mapped[l].encode())
+              fd.write(chr(0)*8)
+          except: 
+              print(l + "sign is not supported")
        print("WRITE completed")
 
 class Click(Command):
    def __init__(self, t, val):
         super().__init__(t, val)  
    def execute(self):
-       print(self.c_val)
-       print(self.c_type)
-       print(chr(0)*8)
+       with open('/dev/hidg0', 'rb+') as fd:
+        for l in self.c_val:
+          try:
+              fd.write(key_mapped[l].encode())
+              fd.write(chr(0)*8)
+          except: 
+              print(l + "click is not supported")
        print("click completed")  
 
 def my_parser(one_cmd):

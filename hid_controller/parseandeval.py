@@ -32,7 +32,7 @@ class Write(Command):
               uc = chr(0) * 8
               fd.write(uc.encode())
           except: 
-              print(l + "sign is not supported")
+              print(l + " sign is not supported")
        print("WRITE completed")
 
 '''
@@ -48,7 +48,7 @@ class Click(Command):
             uc = chr(0) * 8
             fd.write(uc.encode())
         except: 
-            print(self.c_val + "click is not supported")
+            print(self.c_val + " click is not supported")
        print("click completed")  
 
 '''

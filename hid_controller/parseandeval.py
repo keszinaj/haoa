@@ -8,7 +8,7 @@ class Command():
     self.c_correct = True
 
 '''
-   Object represent WAIT command
+   Object represents WAIT command
 '''
 class Wait(Command):
    def __init__(self, t, val):
@@ -19,7 +19,7 @@ class Wait(Command):
        print("SLEEP completed")
 
 '''
-   Object represent WRITE command
+   Object represents WRITE command
 '''
 class Write(Command):
    def __init__(self, t, val):
@@ -36,7 +36,7 @@ class Write(Command):
        print("WRITE completed")
 
 '''
-   Object represent CLICK command
+   Object represents CLICK command
 '''
 class Click(Command):
    def __init__(self, t, val):

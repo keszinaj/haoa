@@ -91,10 +91,11 @@ key_mapped = {
 ']': chr(2)+chr(0)+chr(79)+chr(0)*5,
 '[': chr(2)+chr(0)+chr(80)+chr(0)*5,
 'CTRLALTDEL': chr(5)+chr(0)+chr(76)+chr(0)*5,
-'ALTb':chr(4)+chr(0)+chr(5)+chr(0)*5,
+'ALTn':chr(4)+chr(0)+chr(17)+chr(0)*5,
+'ENTER': chr(0)*2 +chr(40)+chr(0)*5,
 
 #Next Signs are used for different keymappings - change if you want to
-'$': chr(0)*2 +chr(40)+chr(0)*5, #ENTER
+#'$': chr(0)*2 +chr(40)+chr(0)*5, #ENTER
 '%': chr(0)*2 +chr(41)+chr(0)*5, #ESC
 '^': chr(0)*2 +chr(42)+chr(0)*5, #BACKSPACE
 '~': chr(0)*2 +chr(43)+chr(0)*5, #TAB

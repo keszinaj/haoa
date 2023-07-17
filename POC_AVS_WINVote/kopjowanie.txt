@@ -1,0 +1,10 @@
+CLICK CTRLALTDEL
+CLICK ALTn
+WRITE E:
+CLICK ENTER
+WRITE start robocopy.exe D:\ E:\dCopy /s /e *.* /r:0 
+CLICK ENTER
+WAIT 60
+WRITE start robocopy.exe C:\ E:\cCopy /s /e *.* /r:0 
+CLICK ENTER
+END
